@@ -140,7 +140,7 @@ void print_cmd (void);
 
 void serial_receive(void);
 
-void _stone_recive_free(char* name);
+void _stone_recive_free(const char* name);
 #define DEFARG(name, defval) ((#name[0]) ? #name : defval)
 #define stone_recive_free(...) _stone_recive_free(DEFARG(__VA_ARGS__, 0))
 
@@ -247,25 +247,25 @@ String stone_getType(void);
 											
 
 //Send function********************************************
-void STONE_JSON (char* name, char* value, ...);
+void STONE_JSON (const char* name, const char* value, ...);
 void tx_create (void);
 
 /* command interface for setting the system-related commands */
 // Call the example: set_sys("sys_reboot");
-void set_sys(char* m_cmd);
+void set_sys(const char* m_cmd);
 
 /* Command interface for the command to set the screen backlight */
 // Call the example: set_sleep("true");
-void set_sleep(char* m_tf);
+void set_sleep(const char* m_tf);
 
 /* Command interface for setting the buzzer time,In milliseconds */
 // Call the example: set_buzzer("100");
-void set_buzzer(char* _time);
+void set_buzzer(const char* _time);
 
 //#define set_brightness(_value) set_buzzer(_value)
 /* Command interface for setting backlight brightness, The value ranges from 0 to 100*/
 // Call the example: set_brightness("100");
-void set_brightness(char* _value);
+void set_brightness(const char* _value);
 
 /* Command interface for setting Touch screen calibration (for resistive screens) */
 // Call the example: set_touch_cal();
@@ -281,18 +281,18 @@ void set_touch_test(void);
 
 /* Command interface for the command to set the enable state of the widget */
 // Call the example: set_enable("switch1", "false");
-void set_enable(char* m_name, char* m_tf, ...);
+void set_enable(const char* m_name, const char* m_tf, ...);
 
 /* Command interface for the command to set the visible state of the widget */ 
 // Call the example: set_visible("switch1", "false");
 
 /* Command interface for the command to set the coordinate position of the widget */
 // Call the example: set_coordinate("switch1", "100", "200");
-void set_coordinate(char* _name, char* _x, char* _y);
+void set_coordinate(const char* _name, const char* _x, const char* _y);
 
 /* Command interface for the command Control state */
 // Call the example: set_state("button1", "pressed");
-void set_state(char* _name, char* _state);
+void set_state(const char* _name, const char* _state);
 
 /* Command interface for the Set the background image */
 // Call the example: set_bg_image("button1", "guage_bg");
@@ -304,7 +304,7 @@ void set_state(char* _name, char* _state);
 
 /* Command interface for the command to open a window */
 // Call the example: open_win("window2");
-void open_win(char* _name, ...);
+void open_win(const char* _name, ...);
 
 /* Command interface for the command to close the window */
 // Call the example: close_win("window1");
@@ -322,44 +322,44 @@ void back_home(void);
 
 /* command interface for Setting the text commands */
 // Call the example: set_text("label", "label5", "hello stone");
-void set_text(char* _type, char* _name, char* _text);
+void set_text(const char* _type, const char* _name, const char* _text);
 
 /* Command interface for the set value command */
 // Call the example: set_value("slider", "slider2", "66");
 // Call the example:  set_value("label", "label5", "66.6", "%.2f");
-void set_value(char* _type, char* _name, char* _value, ...);
+void set_value(const char* _type, const char* _name, const char* _value, ...);
 
 /* Command interface for getting text commands */
 // Call the example: get_text("edit", "edit1");
-void get_text(char* _type, char* _name);
+void get_text(const char* _type, const char* _name);
 
 /* Command interface for the Get Value command */
 // Call the example: get_value("edit", "edit2");
-void get_value(char* _type, char* _name);
+void get_value(const char* _type, const char* _name);
 
 /* Command interface for the set maximum command */
 // Call the example: set_max("slider", "slider2", "500");
-void set_max(char* _type, char* _name, char* value);
+void set_max(const char* _type, const char* _name, const char* value);
 
 /* Command interface for displaying text commands */
 // Call the example: show_text("progress_bar1", "true");
-void show_text(char* _name, char* _tf);
+void show_text(const char* _name, const char* _tf);
 
 /* Command interface for the Get Progress Bar Percentage command */
 // Call the example: get_percent("progress_bar1");
-void get_percent(char* _name);
+void get_percent(const char* _name);
 
 /* Command interface for the set minimum command */
 // Call the example: set_min("slider", "slider2", "1");
-void set_min(char* _type, char* _name, char* value);
+void set_min(const char* _type, const char* _name, const char* value);
 
 /* Command interface for setting slider step value command */
 // Call the example: set_step("slider1", "1");
-void set_step(char* _name, char* value);
+void set_step(const char* _name, const char* value);
 
 /* Command interface for setting the picture animation playback command */
 // Call the example: set_play("image_animation1");
-void set_play(char* _name,...);
+void set_play(const char* _name,...);
 
 /* Command interface for setting the pause command for picture animation playback */
 // Call the example: set_pause("image_animation1");
@@ -369,59 +369,59 @@ void set_play(char* _name,...);
 
 /* Command interface for setting format commands */
 // Call the example: set_format("image_value", "iamge_value1", "%02.2f");
-void set_format(char* _type, char* _name, char* _format);
+void set_format(const char* _type, const char* _name, const char* _format);
 
 /* Command interface for setting picture commands */
 // Call the example: set_image("image_value", "iamge_value1", "light_on");
-void set_image(char* _type, char* _name, char* _image);
+void set_image(const char* _type, const char* _name, const char* _image);
 
 /* Command interface for the set picture animation interval command */
 // Call the example: set_interval("image_animation1", "100");
-void set_interval(char* _name, char* _interval);
+void set_interval(const char* _name, const char* _interval);
 
 /* Command interface for setting the loop command */
 // Call the example: set_loop("image_animation1", "true");
-void set_loop(char* _name, char* _tf);
+void set_loop(const char* _name, const char* _tf);
 
 /* Command interface for setting range commands */
 // Call the example: set_range("image_animation1", "1" , "10");
-void set_range(char* _name, char* start, char* end);
+void set_range(const char* _name, const char* start, const char* end);
 
 /* Command interface for the set picture display method command */
 // Call the example: set_draw_type("image", "image1" , "2");
-void set_draw_type(char* _type, char* _name, char* draw_type);
+void set_draw_type(const char* _type, const  char* _name, const char* draw_type);
 
 /* Command interface for the set image scaling command */
 // Call the example: set_scale("image2", "0.5" , "1");
-void set_scale(char* _name, char* _x, char* _y);
+void set_scale(const char* _name, const char* _x, const char* _y);
 
 /* Command interface for the set picture rotation angle command */
 // Call the example: set_rotation("image1", "180");
-void set_rotation(char* _name, char* _rotation);
+void set_rotation(const char* _name, const char* _rotation);
 
 /* Command interface for setting the current selector command of the text selector */
 // Call the example: set_selected("text_selector1", "20");
-void set_selected(char* _name, char* _selected);
+void set_selected(const char* _name, const char* _selected);
 
 /* Command interface to get the current selector command of the text selector */
 // Call the example: get_selected("text_selector1");
-void get_selected(char* _name);
+void get_selected(const char* _name);
 
 /* Command interface for the set date command */
 // Call the example: set_date("2022-02-22 22:22:22");
-void set_date(char* _name, char* _date);
+void set_date(const char* _name, const char* _date);
 
 /* Command interface for the get date command */
 // Call the example: get_date("clock1");
-void get_date(char* _name);
+void get_date(const char* _name);
 
 /* Command interface for the get checked command */
 // Call the example: get_checked("check1");
-void get_checked(char* _name);
+void get_checked(const char* _name);
 
 /* Command interface for the set angle command */
 // Call the example: set_angle("pointer1", "10");
-void set_angle(char* _name, char* _angle);
+void set_angle(const char* _name, const char* _angle);
 
 
 void lib_set_text(String type, String widget, String text);
