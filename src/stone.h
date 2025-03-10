@@ -224,10 +224,6 @@ String stone_getType(void);
 #define JSON_END							1
 
 
-// static const char STR_TEXT_SELECTOR[] = "text_selector";
-// static const char STR_END_INDEX[] = "end_index";
-// static const char STR_END[] = "}>ET\n";
-
 #define STR_TYPE_NUM 	strcmp(name,STR_SLEEP)==0||\
 											strcmp(name,STR_ENABLE)==0||\
 											strcmp(name,STR_VISIBLE)==0||\
