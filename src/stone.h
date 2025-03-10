@@ -428,7 +428,7 @@ void lib_set_value(String type, String widget, String _value, String format);
 void lib_set_enable(String widget, bool _bool);
 void lib_set_visible(String widget, bool _bool);
 void lib_set_enaVisi(String widget, bool _bool);
-void lib_open_win(char* widget, bool _bool);
+void lib_open_win(String widget, bool _bool);
 void lib_set_bg_image(String widget, String image);
 void lib_set_bg_color(String widget, uint32_t color);
 void lib_set_text_color(String widget, uint32_t color);

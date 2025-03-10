@@ -212,40 +212,39 @@ void set_touch_test(void){
 
 /* Command interface for the command to set the enable state of the widget */
 // Call the example: set_enable("switch1", "false");
-void set_enable(char* _name, char* _tf, ...){
+void set_enable(char *_name, char *_tf, ...) {
 	va_list p_end;
 	va_start(p_end, _tf);
 	int end;
 	end = va_arg(p_end, int);
-  if (strcmp(_tf,"true")==0 || strcmp(_tf,"false")==0){
-		
-    TX_CNT = sprintf(STONE_TX_BUF,STR_HEAD_CMD2);
-		STONE_TX_BUF[TX_CNT++] = '"';
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,STR_SET_);
-		if(end == 1)
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,STR_VISIBLE);
-		else
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,STR_ENABLE);
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,"\",\"");
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,STR_TYPE);
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,"\":\"");
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,STR_SYSTEM);
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,"\",\"");
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,STR_SLEEP);
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,"\":");
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,"%s",_tf);
-		TX_CNT += sprintf(STONE_TX_BUF+TX_CNT,STR_END);
-
-		tx_create();
-		}
-	#if MCU_ARDUINO || MCU_ESP
-  else
-		{
-			stone_printf("input error!");
-		}
-	#endif
+	if (strcmp(_tf, "true") == 0 || strcmp(_tf, "false") == 0) {
+  
+	  TX_CNT = sprintf(STONE_TX_BUF, STR_HEAD_CMD2);
+	  STONE_TX_BUF[TX_CNT++] = '"';
+	  TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, STR_SET_);
+	  if (end == 1)
+		TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, STR_VISIBLE);
+	  else
+		TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, STR_ENABLE);
+	  TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, "\",\"");
+	  TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, STR_TYPE);
+	  TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, "\":\"");
+	  TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, STR_SYSTEM);
+	  TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, "\",\"");
+	  TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, STR_SLEEP);
+	  TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, "\":");
+	  TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, "%s", _tf);
+	  TX_CNT += sprintf(STONE_TX_BUF + TX_CNT, STR_END);
+  
+	  tx_create();
+	}
+  #if MCU_ARDUINO || MCU_ESP
+	else {
+	  stone_printf("input error!");
+	}
+  #endif
 	va_end(p_end);
-}
+  }
 
 /* Command interface for the command to set the visible state of the widget */
 // Call the example: set_visible("switch1", "false");

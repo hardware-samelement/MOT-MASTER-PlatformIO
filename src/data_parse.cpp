@@ -205,19 +205,19 @@ String labelSatuan;
 float refDataArr[11];
 float senDataArr[11];
 
-char* labelReferensi11[] = { "label_ref0_copy1", "label_ref1_copy1", "label_ref2_copy1", "label_ref3_copy1", "label_ref4_copy1", "label_ref5_copy1", "label_ref6_copy1", "label_ref7_copy1", "label_ref8_copy1", "label_ref9_copy1", "label_ref10_copy1" };
-char* labelSensor11[] = { "label_nilaiSensor0_copy1", "label_nilaiSensor1_copy1", "label_nilaiSensor2_copy1", "label_nilaiSensor3_copy1", "label_nilaiSensor4_copy1", "label_nilaiSensor5_copy1", "label_nilaiSensor6_copy1", "label_nilaiSensor7_copy1", "label_nilaiSensor8_copy1", "label_nilaiSensor9_copy1", "label_nilaiSensor10_copy1" };
-char* labelReferensi4[] = { "label_ref0_copy2", "label_ref1_copy2", "label_ref2_copy2", "label_ref3_copy2" };
-char* labelSensor4[] = { "label_nilaiSensor0_copy2", "label_nilaiSensor1_copy2", "label_nilaiSensor2_copy2", "label_nilaiSensor3_copy2" };
-char* labelReferensi6[] = { "label_ref0", "label_ref1", "label_ref2", "label_ref3", "label_ref4", "label_ref5" };
-char* labelSensor6[] = { "label_nilaiSensor0", "label_nilaiSensor1", "label_nilaiSensor2", "label_nilaiSensor3", "label_nilaiSensor4", "label_nilaiSensor5" };
+String labelReferensi11[] = { "label_ref0_copy1", "label_ref1_copy1", "label_ref2_copy1", "label_ref3_copy1", "label_ref4_copy1", "label_ref5_copy1", "label_ref6_copy1", "label_ref7_copy1", "label_ref8_copy1", "label_ref9_copy1", "label_ref10_copy1" };
+String labelSensor11[] = { "label_nilaiSensor0_copy1", "label_nilaiSensor1_copy1", "label_nilaiSensor2_copy1", "label_nilaiSensor3_copy1", "label_nilaiSensor4_copy1", "label_nilaiSensor5_copy1", "label_nilaiSensor6_copy1", "label_nilaiSensor7_copy1", "label_nilaiSensor8_copy1", "label_nilaiSensor9_copy1", "label_nilaiSensor10_copy1" };
+String labelReferensi4[] = { "label_ref0_copy2", "label_ref1_copy2", "label_ref2_copy2", "label_ref3_copy2" };
+String labelSensor4[] = { "label_nilaiSensor0_copy2", "label_nilaiSensor1_copy2", "label_nilaiSensor2_copy2", "label_nilaiSensor3_copy2" };
+String labelReferensi6[] = { "label_ref0", "label_ref1", "label_ref2", "label_ref3", "label_ref4", "label_ref5" };
+String labelSensor6[] = { "label_nilaiSensor0", "label_nilaiSensor1", "label_nilaiSensor2", "label_nilaiSensor3", "label_nilaiSensor4", "label_nilaiSensor5" };
 
-char* labelReferensi11e[] = { "label_11ref0", "label_11ref1", "label_11ref2", "label_11ref3", "label_11ref4", "label_11ref5", "label_11ref6", "label_11ref7", "label_11ref8", "label_11ref9", "label_11ref10" };
-char* labelSensor11e[] = { "label_11sensor0", "label_11sensor1", "label_11sensor2", "label_11sensor3", "label_11sensor4", "label_11sensor5", "label_11sensor6", "label_11sensor7", "label_11sensor8", "label_11sensor9", "label_11sensor10" };
-char* labelReferensi4e[] = { "label_4ref0", "label_4ref1", "label_4ref2", "label_4ref3" };
-char* labelSensor4e[] = { "label_4sensor0", "label_4sensor1", "label_4sensor2", "label_4sensor3" };
-char* labelReferensi6e[] = { "label_6ref0", "label_6ref1", "label_6ref2", "label_6ref3", "label_6ref4", "label_6ref5" };
-char* labelSensor6e[] = { "label_6sensor0", "label_6sensor1", "label_6sensor2", "label_6sensor3", "label_6sensor4", "label_6sensor5" };
+String labelReferensi11e[] = { "label_11ref0", "label_11ref1", "label_11ref2", "label_11ref3", "label_11ref4", "label_11ref5", "label_11ref6", "label_11ref7", "label_11ref8", "label_11ref9", "label_11ref10" };
+String labelSensor11e[] = { "label_11sensor0", "label_11sensor1", "label_11sensor2", "label_11sensor3", "label_11sensor4", "label_11sensor5", "label_11sensor6", "label_11sensor7", "label_11sensor8", "label_11sensor9", "label_11sensor10" };
+String labelReferensi4e[] = { "label_4ref0", "label_4ref1", "label_4ref2", "label_4ref3" };
+String labelSensor4e[] = { "label_4sensor0", "label_4sensor1", "label_4sensor2", "label_4sensor3" };
+String labelReferensi6e[] = { "label_6ref0", "label_6ref1", "label_6ref2", "label_6ref3", "label_6ref4", "label_6ref5" };
+String labelSensor6e[] = { "label_6sensor0", "label_6sensor1", "label_6sensor2", "label_6sensor3", "label_6sensor4", "label_6sensor5" };
 
 int sampleN2O;
 float refDataN2O[11];
@@ -3499,11 +3499,12 @@ float calibrationStart(int sensorNumber, float inp) {
       }
     }
 
-    if (inp < senDataHumidity[sampleHumidity - 2]) {  //area terakhir
+    if (inp < senDataHumidity[sampleHumidity - 2]) { // area terakhir
       return (inp - senDataHumidity[sampleHumidity - 2]) * (refDataHumidity[sampleHumidity - 1] - refDataHumidity[sampleHumidity - 2]) / (senDataHumidity[sampleHumidity - 1] - senDataHumidity[sampleHumidity - 2]) + refDataHumidity[sampleHumidity - 2];
     }
     return inp;
   }
+  return 0;
 }
 
 void calibrationInit() {
@@ -3780,9 +3781,13 @@ void reset_anastetion(void) {
   lib_set_value("label", "label1_menit_waktu_anestesi", "0", "%02d");
   lib_set_value("label", "label1_detik_waktu_anstesi", "0", "%02d");
 }
+
 int data_parse::getTrack(void) {
-  if (track < 255 && track > 0) return track;
+  if (track < 255 && track > 0)
+    return track;
+  return 0;
 }
+
 int data_parse::getsTates(void) {
   return jeda;
 }
@@ -4484,7 +4489,8 @@ void addressBookShow(void) {
   }
 
   for (int i = liIdx; i < 20; i++) {
-    contactIdx[i] = NULL;
+    //contactIdx[i] = NULL;
+    contactIdx[i] = i;
     temp = "list_item" + String(i + 10);
     lib_set_enaVisi(temp, 0);
   }

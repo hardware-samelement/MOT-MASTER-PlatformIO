@@ -133,7 +133,7 @@ void lib_set_enaVisi(String widget, bool _bool){
   lib_set_visible(widget, _bool);
 }
 
-void lib_open_win(char* widget, bool _bool) {
+void lib_open_win(String widget, bool _bool) {
   char buff[300];
   if (_bool) {
     sprintf(buff, "ST<{\"cmd_code\":\"open_win\",\"type\":\"window\",\"widget\":\"%s\"}>ET\n", widget);

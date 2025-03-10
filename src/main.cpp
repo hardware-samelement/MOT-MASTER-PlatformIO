@@ -618,7 +618,7 @@ void Pressr_RS485() {
             lib_set_enaVisi("view_v_callin", 0);
             lib_set_enaVisi("view_v_call", 1);
 
-            if (voip_volume == NULL) {
+            if (voip_volume == -1) {
               pref.begin("voipRegister", true);
               voip_volume = pref.getInt("voip_vol", 80);
               pref.end();
@@ -695,7 +695,7 @@ void Pressr_RS485() {
               voip_callTimer = true;
               lib_set_visible("label_v_callTime", 1);
 
-              if (voip_volume == NULL) {
+              if (voip_volume == -1) {
                 pref.begin("voipRegister", true);
                 voip_volume = pref.getInt("voip_vol", 80);
                 pref.end();
