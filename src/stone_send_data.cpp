@@ -20,7 +20,6 @@ void lib_set_text(String type, String widget, String text) {
   stone_print(F(txtBUF));
 }
 
-
 void lib_set_value(String type, String widget, String _value, String format) {
   char valBUF[200];
 
@@ -44,7 +43,7 @@ void lib_set_value(String type, String widget, String _value, String format) {
 }
 /*void lib_set_color(char* type, char* widget, String color){
   char valBUF[200];
- 
+
       sprintf(valBUF,STR_HEAD_CMD2             //"ST<{cmd_code:"
                           "\""STR_SET_                  //"set_
                               STR_COLOR"\","            //value",
@@ -55,7 +54,7 @@ void lib_set_value(String type, String widget, String _value, String format) {
                             "color_object\":\"bg_color\",\"color\":"
                             "%s"
                             STR_END
-                            , type, widget, color); 
+                            , type, widget, color);
       stone_print(F(valBUF));
       //Serial.print(F(valBUF));
 }
@@ -69,9 +68,9 @@ void lib_set_visible(char* type, char* widget, String en){
                             "\""STR_WIDGET"\":"         //"widget":
                             "\"%s\","                   //"...",
                             "visible\":"            //"value":
-                            "%s\"" 
+                            "%s\""
                             STR_END
-                            , type, widget, _value,format); 
+                            , type, widget, _value,format);
       stone_print(F(valBUF));
       //Serial.print(F(valBUF));
 }
@@ -82,21 +81,20 @@ void set_enable_(String type, String widget, String en){
 }*/
 /*
 void set_date_time(int years, int months, int date, int hours, int minutes){
-  
+
   Serial2.print(F("ST<{\"cmd_code\":\"set_date\",\"type\":\"digit_clock\",\"widget\":\"digit_clock2\",\"date\":\""));
   Serial2.print(years); Serial2.print(F("-")); Serial2.print(months); Serial2.print(F("-")); Serial2.print(date); Serial2.print(F(" ")); Serial2.print(hours); Serial2.print(F(":")); Serial2.print(atur_menit); Serial2.println(F("\"}>ET"));
-    
+
   Serial2.print(F("ST<{\"cmd_code\":\"set_date\",\"type\":\"digit_clock\",\"widget\":\"digit_clock4\",\"date\":\""));
   Serial2.print(years); Serial2.print(F("-")); Serial2.print(months); Serial2.print(F("-")); Serial2.print(date); Serial2.print(F(" ")); Serial2.print(hours); Serial2.print(F(":")); Serial2.print(atur_menit); Serial2.println(F("\"}>ET"));
-    
+
   Serial2.print(F("ST<{\"cmd_code\":\"set_date\",\"type\":\"digit_clock\",\"widget\":\"digit_clock6\",\"date\":\""));
   Serial2.print(years); Serial2.print(F("-")); Serial2.print(months); Serial2.print(F("-")); Serial2.print(date); Serial2.print(F(" ")); Serial2.print(hours); Serial2.print(F(":")); Serial2.print(atur_menit); Serial2.println(F("\"}>ET"));
-    
+
   Serial2.print(F("ST<{\"cmd_code\":\"set_date\",\"type\":\"digit_clock\",\"widget\":\"digit_clock7\",\"date\":\""));
   Serial2.print(years); Serial2.print(F("-")); Serial2.print(months); Serial2.print(F("-")); Serial2.print(date); Serial2.print(F(" ")); Serial2.print(hours); Serial2.print(F(":")); Serial2.print(atur_menit); Serial2.println(F("\"}>ET"));
 }
 */
-
 
 /*
 void set_visible_(String type, String widget, String vis){
@@ -128,7 +126,7 @@ void lib_set_visible(String widget, bool _bool) {
   stone_print(F(buff));
 }
 
-void lib_set_enaVisi(String widget, bool _bool){
+void lib_set_enaVisi(String widget, bool _bool) {
   lib_set_enable(widget, _bool);
   lib_set_visible(widget, _bool);
 }
@@ -149,7 +147,7 @@ void lib_open_win(String widget, bool _bool) {
   stone_print(F(buff));
 }
 
-void lib_set_bg_image(String widget, String image){
+void lib_set_bg_image(String widget, String image) {
   char buff[300];
   sprintf(buff, "ST<{\"cmd_code\":\"set_bg_image\",\"type\":\"widget\",\"widget\":\"%s\",\"bg_image\":\"%s\"}>ET", widget.c_str(), image.c_str());
   stone_print(F(buff));
@@ -159,7 +157,7 @@ void lib_set_bg_image(String widget, String image){
   Serial.printf("set bg image \"%s\" with \"%s\"\n", widget.c_str(), image.c_str());
 }
 
-void lib_set_bg_color(String widget, uint32_t color){
+void lib_set_bg_color(String widget, uint32_t color) {
   char buff[300];
   sprintf(buff, "ST<{\"cmd_code\":\"set_color\",\"type\":\"widget\",\"widget\":\"%s\",\"color_object\":\"bg_color\",\"color\":%s}>ET", widget.c_str(), String(color).c_str());
   stone_print(F(buff));
@@ -169,7 +167,7 @@ void lib_set_bg_color(String widget, uint32_t color){
   Serial.printf("set bg color \"%s\" to \"%s\"\n", widget.c_str(), String(color).c_str());
 }
 
-void lib_set_text_color(String widget, uint32_t color){
+void lib_set_text_color(String widget, uint32_t color) {
   char buff[300];
   sprintf(buff, "ST<{\"cmd_code\":\"set_color\",\"type\":\"widget\",\"widget\":\"%s\",\"color_object\":\"text_color\",\"color\":%s}>ET", widget.c_str(), String(color).c_str());
   stone_print(F(buff));

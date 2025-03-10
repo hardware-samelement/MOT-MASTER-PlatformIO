@@ -223,6 +223,11 @@ String stone_getType(void);
 #define STR_END								"}>ET\n"
 #define JSON_END							1
 
+
+// static const char STR_TEXT_SELECTOR[] = "text_selector";
+// static const char STR_END_INDEX[] = "end_index";
+// static const char STR_END[] = "}>ET\n";
+
 #define STR_TYPE_NUM 	strcmp(name,STR_SLEEP)==0||\
 											strcmp(name,STR_ENABLE)==0||\
 											strcmp(name,STR_VISIBLE)==0||\
@@ -295,11 +300,11 @@ void set_state(char* _name, char* _state);
 
 /* Command interface for the Set the background image */
 // Call the example: set_bg_image("button1", "guage_bg");
-void set_bg_image(char* _name, char* _image);
+// void set_bg_image(char* _name, char* _image);
 
 /* Command interface for the Set the background color */
 // Call the example: set_color("button1", "bg_color", "guage_bg");
-void set_color(char* _name, char* _object, char* _color);
+// void set_color(char* _name, char* _object, char* _color);
 
 /* Command interface for the command to open a window */
 // Call the example: open_win("window2");
